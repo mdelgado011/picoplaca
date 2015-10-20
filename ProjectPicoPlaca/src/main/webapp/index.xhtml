@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Pico y Placa Predictor</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl id="msgglobal" showDetail="true" sticky="true" />  
+            <p:panelGrid columns="2">
+                <f:facet name="header">Predictor</f:facet>
+                <p:outputLabel for="pinplaca" value="Introduzca su Placa: "/>
+                <p:inputText id="pinplaca" value="#{mbCar.placa}" maxlength="8" required="true" requiredMessage="El campo placa no puede estar vacio."/>
+                <p:outputLabel for="pinfecha" value="Fecha:" />
+                <p:calendar id="pinfecha" value="#{mbCar.fecha}" pattern="dd-MM-yyyy" mask="true" required="true"/>
+                <p:outputLabel for="ptime" value="Tiempo" />
+                <p:calendar id="ptime" value="#{mbCar.timeInit}" pattern="HH:mm" timeOnly="true"  required="true"/>
+            </p:panelGrid>
+            
+            <p:commandButton value="Predecir" id="ajax" update="msgglobal" actionListener="#{mbCar.buttonPredict}" />
+        </h:form>
+    </h:body>
+</html>
+
